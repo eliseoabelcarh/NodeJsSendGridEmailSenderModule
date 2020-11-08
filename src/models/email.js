@@ -123,7 +123,7 @@ function crearEmailConCamposOpcionales(from, to, subject, text, arrayConPathDeAr
 
     const base = crearObjetoEmail(from, to, subject, text)
 
-    if (arrayConPathDeArchivos.length) {
+    if (arrayConPathDeArchivos) {
         email.attachments = []
         for (let i = 0; i < arrayConPathDeArchivos.length; i++) {
             const rutaElemento = arrayConPathDeArchivos[i];
