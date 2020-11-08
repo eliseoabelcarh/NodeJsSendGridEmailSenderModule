@@ -92,9 +92,9 @@ describe('con ApiKey inválida', () => {
 
 })
 
-xdescribe('CON API KEY VALIDA', () => {
+describe('CON API KEY VALIDA', () => {
 
-    const config = { apiKey: process.env.SENDGRID_API_KEY }
+    const config = { apiKey: process.env.SENDGRID_API_KEY, user: process.env.SENDGRID_USER_EMAIL }
 
 
     describe('envío de email texto plano y con html', () => {
@@ -147,8 +147,7 @@ xdescribe('CON API KEY VALIDA', () => {
             const arrayConPathDeArchivos = ['test/assets/ejemplo.pdf']
             const esperado = true
             const sender = await crearEmailSender(config)
-            //have to change timeout in mocha script package.json
-            const respuesta1 = await sender.sendEmail(example.from, example.to, example.subject, example.html, arrayConPathDeArchivos)
+            const respuesta1 = await sender.sendEmail({ to: example.to, subject: example.subject, textOrHtml: example.html, arrayConPathDeArchivos })
             assert.deepStrictEqual(respuesta1, esperado)
         })
     })
