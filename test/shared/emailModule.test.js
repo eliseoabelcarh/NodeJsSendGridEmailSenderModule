@@ -147,7 +147,7 @@ describe('CON API KEY VALIDA', () => {
             const arrayConPathDeArchivos = ['test/assets/ejemplo.pdf']
             const esperado = true
             const sender = await crearEmailSender(config)
-            const respuesta1 = await sender.sendEmail({ to: example.to, subject: example.subject, textOrHtml: example.html, arrayConPathDeArchivos })
+            const respuesta1 = await sender.sendEmail({ to: example.to, subject: example.subject, text: example.html, arrayConPathDeArchivos })
             assert.deepStrictEqual(respuesta1, esperado)
         })
     })

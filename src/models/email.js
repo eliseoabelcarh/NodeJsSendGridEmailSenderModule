@@ -6,7 +6,7 @@ const { generateFileObjectFromPath } = require('./fileObject')
 
 
 
-function crearObjetoEmail(from, to, subject, textOrHtml) {
+function crearObjetoEmail(from, to, subject, text) {
     let email = {}
     if (!from) {
         throw crearErrorArgumentosInvalidos('from', 'campo requerido')
@@ -23,10 +23,10 @@ function crearObjetoEmail(from, to, subject, textOrHtml) {
     } else {
         email.subject = subject
     }
-    if (!textOrHtml) {
+    if (!text) {
         throw crearErrorArgumentosInvalidos('html', 'campo requerido')
     } else {
-        email.html = textOrHtml
+        email.html = text
     }
     return email
 }
@@ -117,11 +117,11 @@ function crearEmailConTextoPlanoYHtmlYAttachmentConFiles(objeto, arrayConPathDeA
 }
 
 
-function crearEmailConCamposOpcionales(from, to, subject, textOrHtml, arrayConPathDeArchivos) {
+function crearEmailConCamposOpcionales(from, to, subject, text, arrayConPathDeArchivos) {
 
     let email = {}
 
-    const base = crearObjetoEmail(from, to, subject, textOrHtml)
+    const base = crearObjetoEmail(from, to, subject, text)
 
     if (arrayConPathDeArchivos.length) {
         email.attachments = []
